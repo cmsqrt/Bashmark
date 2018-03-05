@@ -35,6 +35,8 @@ To query for anything, just use `??`, this will basically perform a fuzzy search
 ?? "Query text"
 ```
 
+After selecting the correct match, the result is copied to the pasteboard and can simply be pasted (e.g. CTRL+V, CMD+V).
+
 # Managing Bashmark Commands
 
 The current command list can be checked using the `bmark` command:
