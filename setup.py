@@ -6,10 +6,10 @@ setup(
 	  	entry_points =
 	  	{
               'console_scripts': [
-                  '++ = bashmark:add_new',
-                  '?? = bashmark:search',
-				  '??! = bashmark:search_force',
-				  'bmark = bashmark:bashmark']
+                  '++ = Bashmark.bashmark:add_new',
+                  '?? = Bashmark.bashmark:search',
+				  '??! = Bashmark.bashmark:search_force',
+				  'bmark = Bashmark.bashmark:bashmark']
 	  	})
 
 # pip command
