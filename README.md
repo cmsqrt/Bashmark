@@ -15,7 +15,7 @@ After the init completes, either restart your shell or run `source ~/.bash_profi
 
 # Using Bashmark
 
-Adding the latest command to Bashmark is easy - there are 3 core operation `++`, to add a command to bashmark, `??`, to query for any command added earlier and `??!` to retrieve the best match without additional user interaction.
+Adding the latest command to Bashmark is easy - there are 3 core operations `++`, to add a command to bashmark, `??`, to query for any command added earlier and `??!` to retrieve the best match without additional user interaction.
 
 To add the last command, simply:
 
