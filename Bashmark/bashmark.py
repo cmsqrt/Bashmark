@@ -1,7 +1,7 @@
 import os
 import sys
 import argparse
-from . import implementation
+from Bashmark import implementation
 
 # internal command mapping
 CO_OPERATION_ADD = 'add'  # all ++ operations
