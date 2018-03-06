@@ -44,6 +44,13 @@ The current command list can be checked using the `bmark` command:
 ```
 bmark --list
 ```
+This command will output an indexed list of all commands. To remove a specific command, simply run
+
+```
+bmark --remove 4
+```
+
+This would remove command 4 from the list of commands.
 
 # Removing Bashmark
 
