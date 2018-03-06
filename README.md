@@ -2,6 +2,45 @@
 
 Bashmark is an easy to use command line tool. It helps to bookmark shell commands and retrieve them later using fuzzy search.
 
+# Example
+
+Check out this powerful  example:
+
+```
+cmsqrt@home$ sed -i -e 's/abc/XYZ/g' /tmp/file.txt
+cmsqrt@home$ ++ "replace string in text file"
+cmsqrt@home$ bmark --list
+
+1: get ssh public key - "pbcopy < ~/.ssh/id_rsa.pub"
+2: generate new ssh key - "ssh-keygen -t rsa"
+3: mass rename of files - "for i in x*; do mv x* x*.jp.strings; done"
+4: bashmark git clone - "git clone git@github.com:cmsqrt/Bashmark.git"
+5: split files complete lines - "split -l 140 en_orig.strings"
+6: change shell prompt to cmsqrt - "export PS1="cmsqrt@home$ ""
+7: default shell prompt - "export PS1="\h:\W \u\$ ""
+8: cw current calendar week - "date +"%V""
+9: zeige mir was - "ps -eax"
+10: install bashmark - "sudo -H pip install git+https://github.com/cmsqrt/Bashmark.git"
+11: list all commands bashmark - "bmark --list"
+12: replace string in text file - "sed -i -e 's/abc/XYZ/g' /tmp/file.txt"
+
+cmsqrt@home$ ?? replace
+
+Best Matches
+
+1: replace string in text file (90%)
+2: mass rename of files (51%)
+3: get ssh public key (40%)
+4: generate new ssh key (39%)
+5: split files complete lines (39%)
+
+(Exit with 0): 1
+
+cmsqrt@home$ sed -i -e 's/abc/XYZ/g' /tmp/file.txt
+cmsqrt@home$ ??! replace
+cmsqrt@home$ sed -i -e 's/abc/XYZ/g' /tmp/file.txt
+```
+
 # Installing Bashmark
 
 If you have `pip` installed on your machine, installing Bashmark is super-easy. Simply run:
