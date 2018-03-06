@@ -1,6 +1,6 @@
 # About Bashmark
 
-Ever forgot this one command? How did I do this rename in bash? What was the option to grep with... right! That's what Bashmark is for!
+Did you ever forget this one command? How was a mass-rename done in bash? What was the option to grep with... right, we all forget things! The good news: Bashmark was built to help you!
 
 It is an easy to use command line tool and will help you to bookmark shell commands and retrieve them later using fuzzy search.
 
