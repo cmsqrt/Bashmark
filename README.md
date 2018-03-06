@@ -59,6 +59,6 @@ Then uninstall using pip:
 sudo -H pip uninstall Bashmark
 ```
 
-That's it... All deinstalled and removed. If you'd like to save your Bashmark command history, prior to calling `bmark --clean`, simply copy the file  `~/.bashmark/command` to a folder of your choice.
+That's it... All deinstalled and removed. If you'd like to save your Bashmark command history, prior to calling `bmark --clean`, simply copy the file  `~/.bashmark/commands.json` to a folder of your choice.
 
 

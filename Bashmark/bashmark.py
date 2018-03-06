@@ -28,10 +28,11 @@ def arguments_for(operation):
 		parser.add_argument('query', type=str, help='Search query')
 
 	elif operation == CO_OPERATION_MANAGE:
-		parser = argparse.ArgumentParser(description='Manage bashmark.')
+		parser = argparse.ArgumentParser(description='Manage Bashmark.')
 		parser.add_argument('--init', action='store_true', help='Initialize bashmark')
 		parser.add_argument('--clean', action='store_true', help='Remove bashmark data')
 		parser.add_argument('--list', action='store_true', help='List all bookmarked commands')
+		parser.add_argument('--remove', metavar="INDEX", type=int, help='Remove command at index')
 
 	args = parser.parse_args()
 	return args
@@ -70,3 +71,5 @@ def bashmark():
 		implementation.bashmark_list()
 	elif args.clean:
 		implementation.bashmark_clean()
+	elif args.remove:
+		implementation.bashmark_remove(args.remove)

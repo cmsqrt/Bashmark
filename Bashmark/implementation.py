@@ -1,7 +1,6 @@
 import pyperclip
-import pickle
+import json
 import os
-import sys
 import shutil
 import time
 from fuzzywuzzy import process
@@ -9,12 +8,11 @@ from fuzzywuzzy import process
 # paths for different files
 PATH_HOME_DIR = os.path.expanduser("~")
 PATH_BASE_DIR = '%s/.bashmark' % PATH_HOME_DIR
-PATH_COMMAND_STORE = '%s/commands' % PATH_BASE_DIR
+PATH_COMMAND_STORE_JSON = '%s/commands.json' % PATH_BASE_DIR
 PATH_LAST_COMMAND = '%s/last' % PATH_BASE_DIR
 PATH_PROMPT_EXTENSION = '%s/prompt_extension' % PATH_BASE_DIR
 PATH_BASH_PROFILE = '%s/.bash_profile' % PATH_HOME_DIR
 PATH_BASH_PROFILE_TEMP = '%s/.bash_profile_tmp' % PATH_HOME_DIR
-
 
 # constants
 CO_BASH_PROFILE_ADDITION_COMMENT = "# Added by bashmark remove with 'bmark --clean'"
@@ -43,7 +41,7 @@ def read_last_bash_command():
 
 def get_commands_dict():
 	try:
-		commands_file = open(PATH_COMMAND_STORE, 'rb')
+		commands_file = open(PATH_COMMAND_STORE_JSON, 'rb')
 	except:
 		new_dict = dict()
 		new_dict['commands'] = list()
@@ -51,9 +49,13 @@ def get_commands_dict():
 
 		return new_dict
 
-	command_dict = pickle.load(commands_file)
+	command_dict = json.load(commands_file)
 	return command_dict
 
+def save_commands_dict(commands_dict):
+
+	with open(PATH_COMMAND_STORE_JSON, 'wb') as fp:
+		fp.write(json.dumps(commands_dict, sort_keys=True, indent=4))
 
 def perform_search(query):
 
@@ -140,8 +142,8 @@ def bashmark_init():
 	file.close()
 
 	# move existing store
-	if os.path.exists(PATH_COMMAND_STORE):
-		os.rename(PATH_COMMAND_STORE, PATH_COMMAND_STORE + ".%s" % time.strftime("%Y%m%d%H%M%S") )
+	if os.path.exists(PATH_COMMAND_STORE_JSON):
+		os.rename(PATH_COMMAND_STORE_JSON, PATH_COMMAND_STORE_JSON + ".%s" % time.strftime("%Y%m%d%H%M%S") )
 
 	# info to user...
 	print("\nSuccessfully initialized Bashmark.\n")
@@ -155,19 +157,31 @@ def bashmark_list():
 		print("%i: %s - \"%s\"" % (a + 1, command_dict['descriptions'][a], command_dict['commands'][a]))
 	print
 
+def bashmark_remove(entry_id):
+
+	command_dict = get_commands_dict();
+	if entry_id <= 0 or entry_id > len(command_dict['commands']):
+		print("\nInvalid index, please try again.\n")
+		exit(1)
+
+	print("\nReally delete?\n\n %s - \"%s\"" % (command_dict['descriptions'][entry_id-1], command_dict['commands'][entry_id-1]))
+	a = raw_input('\ny/n: ')
+	if a.lower() == 'y':
+		del command_dict['descriptions'][entry_id-1]
+		del command_dict['commands'][entry_id-1]
+
+		save_commands_dict(command_dict)
+
 
 def add_new(description, a_command):
 
-	command = ''
-	if a_command == '' or a_command == None:
+	command = a_command
+	if command == '' or command == None:
 		command = read_last_bash_command()
-	else:
-		command = a_command
 
 	command_dict = get_commands_dict()
 
 	command_dict['commands'].append(command)
 	command_dict['descriptions'].append(description)
 
-	with open(PATH_COMMAND_STORE, 'wb') as fp:
-		pickle.dump(command_dict, fp)
+	save_commands_dict(command_dict)
