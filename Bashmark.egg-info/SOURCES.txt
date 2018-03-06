@@ -1,9 +1,0 @@
-Bashmark/__init__.py
-Bashmark/bashmark.py
-Bashmark/implementation.py
-Bashmark.egg-info/PKG-INFO
-Bashmark.egg-info/SOURCES.txt
-Bashmark.egg-info/dependency_links.txt
-Bashmark.egg-info/entry_points.txt
-Bashmark.egg-info/requires.txt
-Bashmark.egg-info/top_level.txt

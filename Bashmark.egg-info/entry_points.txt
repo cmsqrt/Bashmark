@@ -1,6 +1,0 @@
-[console_scripts]
-++ = Bashmark.bashmark:add_new
-?? = Bashmark.bashmark:search
-??! = Bashmark.bashmark:search_force
-bmark = Bashmark.bashmark:bashmark
-

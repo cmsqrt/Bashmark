@@ -1,1 +1,4 @@
-./idea/*
+*.pyc 
+Bashmark.egg-info/
+.idea
+.idea/*
